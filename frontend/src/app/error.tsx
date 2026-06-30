@@ -1,3 +1,5 @@
+"use client";
+
 export default function PlaceholderPage({ title }: { title: string }) {
   return (
     <main className="container flex min-h-[calc(100vh-64px)] flex-col items-center justify-center py-16 text-center">
