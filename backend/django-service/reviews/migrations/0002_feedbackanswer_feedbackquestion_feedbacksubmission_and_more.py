@@ -10,7 +10,10 @@ from django.db import migrations, models
 def migrate_course_reviews_to_generic_targets(apps, schema_editor):
     Review = apps.get_model("reviews", "Review")
     ContentType = apps.get_model("contenttypes", "ContentType")
-    course_type = ContentType.objects.get(app_label="courses", model="course")
+    course_type, _ = ContentType.objects.get_or_create(
+    app_label="courses",
+    model="course",
+)
 
     for review in Review.objects.all().iterator():
         review.content_type_id = course_type.id
