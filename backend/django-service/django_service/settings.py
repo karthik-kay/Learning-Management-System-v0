@@ -20,6 +20,12 @@ ALLOWED_HOSTS = config(
     cast=lambda v: [s.strip() for s in v.split(",")],
 )
 
+CSRF_TRUSTED_ORIGINS = config(
+    "CSRF_TRUSTED_ORIGINS",
+    default="http://localhost:3000",
+    cast=lambda v: [s.strip() for s in v.split(",")],
+)
+
 INSTALLED_APPS = [
     "daphne",
     "channels",
