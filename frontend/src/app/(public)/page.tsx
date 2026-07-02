@@ -866,12 +866,14 @@ import {
 import { MarketingLayout } from "@/components/public/layouts/MarketingLayout";
 import { FeatureMockup } from "@/components/public/widgets/display/FeatureMockup";
 import { FeatureShowcase } from "@/components/public/widgets/display/FeatureShowcase";
+import { FeatureSection } from "@/components/public/sections/feature/FeatureSection";
 import {
   PublicButton,
   PublicLink,
 } from "@/components/public/widgets/foundation";
 import { Container } from "@/components/shared/primitives";
 import { Button } from "@/components/ui/button";
+import { InteractiveFeatureShowcase } from "@/components/public/sections/feature/variants/InteractiveFeatureShowcase";
 
 const stats = [
   ["15k+", "Learners on structured paths"],
@@ -1105,7 +1107,9 @@ export default function HomePage() {
       <ProofStrip />
       <ProgramCards />
       <WhyPlatform />
-      <FeaturesSection />
+      <FeatureSection>
+        <InteractiveFeatureShowcase />
+      </FeatureSection>
       <CareerProof />
       <MentorShowcase />
       <CommunityHighlights />
