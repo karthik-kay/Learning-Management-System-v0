@@ -20,9 +20,15 @@ import { TrustedStatsGrid } from "@/components/public/sections/logoCloud/variant
 import { PublicStatCard } from "@/components/public/widgets/cards/PublicStatCard";
 import { LogoChip } from "@/components/public/widgets/display/LogoChip";
 import { Metric } from "@/components/public/widgets/display/Metric";
-import { GraduationCap, Users, FolderKanban, Trophy } from "lucide-react";
+import {
+  GraduationCap,
+  Users,
+  FolderKanban,
+  Trophy,
+  Trees,
+} from "lucide-react";
 import CenterCTA from "@/components/public/sections/cta/variants/CenterCTA";
-
+import { TreesSection } from "@/components/public/sections/tree/TreeSection";
 const stats = [
   {
     value: "15K+",
@@ -372,6 +378,8 @@ export default function AboutPage() {
           <TeamGrid members={members} />
         </div>
       </PeopleSection>
+
+      <TreesSection />
 
       {/* ── STATS / LOGO CLOUD ── py-10 (40px) ───────────────────────────── */}
       <LogoCloudSection
