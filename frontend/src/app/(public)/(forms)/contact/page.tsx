@@ -17,8 +17,8 @@ import {
 import { VerticalTimeline } from "@/components/public/sections/timeline/variants/VerticalTimeline";
 import { AudienceCard } from "@/components/public/widgets/cards/AudienceCard";
 import { ContactCard } from "@/components/public/widgets/cards/ContactCard";
-import { LogoChip } from "@/components/public/widgets/display/LogoChip";
 import { TimelineItem } from "@/components/public/widgets/display/TimelineItem";
+import { PublicButton } from "@/components/public/widgets/foundation";
 import { ContactForm } from "@/components/public/widgets/forms/ContactForm";
 import { Box, Grid, Inline } from "@/components/shared/primitives";
 import { Button } from "@/components/ui/button";
@@ -86,7 +86,7 @@ export default function ContactPage() {
           }
           description={
             <p className="max-w-lg text-base text-muted-foreground leading-relaxed">
-              Whether you're a student seeking support, a mentor looking to
+              Whether you&apos;re a student seeking support, a mentor looking to
               inspire, or a partner aiming for impact. Our team is here to
               support your journey.
             </p>
@@ -146,7 +146,8 @@ export default function ContactPage() {
       <ContactSection className="py-12 bg-slate-50">
         <ContactMethods>
           <ContactCard
-            icon={<Mail className="h-5 w-5 text-orange-500" />}
+            tone="orange"
+            icon={<Mail />}
             title={<h3 className="text-base font-semibold">Admissions</h3>}
             description={
               <p className="text-sm text-muted-foreground leading-relaxed">
@@ -154,17 +155,22 @@ export default function ContactPage() {
               </p>
             }
             action={
-              <Button
-                variant="link"
-                className="h-auto p-0 text-sm text-orange-500"
+              <PublicButton
+                asChild
+                variant="secondary"
+                size="sm"
+                className="h-8 max-w-full px-3 text-xs"
               >
-                admissions@learnerslate.com
-              </Button>
+                <a href="mailto:admissions@learnerslate.com">
+                  admissions@learnerslate.com
+                </a>
+              </PublicButton>
             }
           />
 
           <ContactCard
-            icon={<LifeBuoy className="h-5 w-5 text-orange-500" />}
+            tone="blue"
+            icon={<LifeBuoy />}
             title={<h3 className="text-base font-semibold">Student Support</h3>}
             description={
               <p className="text-sm text-muted-foreground leading-relaxed">
@@ -172,17 +178,22 @@ export default function ContactPage() {
               </p>
             }
             action={
-              <Button
-                variant="link"
-                className="h-auto p-0 text-sm text-orange-500"
+              <PublicButton
+                asChild
+                variant="secondary"
+                size="sm"
+                className="h-8 max-w-full px-3 text-xs"
               >
-                support@learnerslate.com
-              </Button>
+                <a href="mailto:support@learnerslate.com">
+                  support@learnerslate.com
+                </a>
+              </PublicButton>
             }
           />
 
           <ContactCard
-            icon={<Building2 className="h-5 w-5 text-orange-500" />}
+            tone="mint"
+            icon={<Building2 />}
             title={<h3 className="text-base font-semibold">Partnerships</h3>}
             description={
               <p className="text-sm text-muted-foreground leading-relaxed">
@@ -190,17 +201,22 @@ export default function ContactPage() {
               </p>
             }
             action={
-              <Button
-                variant="link"
-                className="h-auto p-0 text-sm text-orange-500"
+              <PublicButton
+                asChild
+                variant="secondary"
+                size="sm"
+                className="h-8 max-w-full px-3 text-xs"
               >
-                partnerships@learnerslate.com
-              </Button>
+                <a href="mailto:partnerships@learnerslate.com">
+                  partnerships@learnerslate.com
+                </a>
+              </PublicButton>
             }
           />
 
           <ContactCard
-            icon={<Users className="h-5 w-5 text-orange-500" />}
+            tone="teal"
+            icon={<Users />}
             title={<h3 className="text-base font-semibold">Mentors</h3>}
             description={
               <p className="text-sm text-muted-foreground leading-relaxed">
@@ -208,12 +224,16 @@ export default function ContactPage() {
               </p>
             }
             action={
-              <Button
-                variant="link"
-                className="h-auto p-0 text-sm text-orange-500"
+              <PublicButton
+                asChild
+                variant="secondary"
+                size="sm"
+                className="h-8 max-w-full px-3 text-xs"
               >
-                mentors@learnerslate.com
-              </Button>
+                <a href="mailto:mentors@learnerslate.com">
+                  mentors@learnerslate.com
+                </a>
+              </PublicButton>
             }
           />
         </ContactMethods>

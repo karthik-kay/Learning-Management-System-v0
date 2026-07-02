@@ -9,7 +9,10 @@ import CenterCTA from "@/components/public/sections/cta/variants/CenterCTA";
 import { EventSection } from "@/components/public/sections/events/EventSection";
 import { mapPublicEventToCard } from "@/components/public/sections/events/eventData";
 import { BountyLeaderboard } from "@/components/public/sections/events/variants/BountyLeaderboard";
-import { EventCategorySection } from "@/components/public/sections/events/variants/EventCategorySection";
+import {
+  EventCategorySection,
+  type EventCategoryTone,
+} from "@/components/public/sections/events/variants/EventCategorySection";
 import { EventHeroCarousel } from "@/components/public/sections/events/variants/EventHeroCarousel";
 import { EventNotifyStrip } from "@/components/public/sections/events/variants/EventNotifyStrip";
 import { HeroSection } from "@/components/public/sections/hero/HeroSection";
@@ -28,6 +31,7 @@ const categoryContent: Record<
     bullets: string[];
     flipped?: boolean;
     background: string;
+    tone: EventCategoryTone;
   }
 > = {
   webinar: {
@@ -40,7 +44,9 @@ const categoryContent: Record<
       "Live Q&A for roadmap and interview doubts",
       "Practical takeaways you can apply immediately",
     ],
-    background: "bg-white",
+    background:
+      "border-t border-public-teal-100 bg-public-teal-50/30 py-12 lg:py-20",
+    tone: "teal",
   },
   workshop: {
     eyebrow: "Workshops",
@@ -53,7 +59,9 @@ const categoryContent: Record<
       "Portfolio-ready outcomes",
     ],
     flipped: true,
-    background: "bg-[#F9FAFB]",
+    background:
+      "border-t border-public-blue-100 bg-public-blue-50/35 py-12 lg:py-20",
+    tone: "blue",
   },
   exam: {
     eyebrow: "Exams",
@@ -65,7 +73,9 @@ const categoryContent: Record<
       "Practical questions and coding tasks",
       "Clear score visibility and retake windows",
     ],
-    background: "bg-white",
+    background:
+      "border-t border-public-neutral-200 bg-public-neutral-50 py-12 lg:py-20",
+    tone: "neutral",
   },
   bounty: {
     eyebrow: "Bounties",
@@ -77,7 +87,9 @@ const categoryContent: Record<
       "Prize pools for top submissions",
       "Public evidence of practical skill",
     ],
-    background: "bg-[#F9FAFB]",
+    background:
+      "border-t border-public-mint-100 bg-public-mint-50/30 py-12 lg:py-20",
+    tone: "mint",
   },
   hackathon: {
     eyebrow: "Hackathons",
@@ -90,7 +102,9 @@ const categoryContent: Record<
       "Prize pools and winner showcases",
     ],
     flipped: true,
-    background: "bg-white",
+    background:
+      "border-t border-public-orange-100 bg-public-orange-50/25 py-12 lg:py-20",
+    tone: "orange",
   },
   community: {
     eyebrow: "Community",
@@ -102,7 +116,9 @@ const categoryContent: Record<
       "Project showcases and feedback",
       "Connections across learning tracks",
     ],
-    background: "bg-[#F9FAFB]",
+    background:
+      "border-t border-public-teal-100 bg-public-teal-50/20 py-12 lg:py-20",
+    tone: "teal",
   },
 };
 
@@ -232,6 +248,7 @@ export function EventsIndexView() {
                   ctaHref={`/events?type=${type}`}
                   events={categoryEvents}
                   flipped={content.flipped}
+                  tone={content.tone}
                 />
                 {type === "bounty" && (
                   <BountyLeaderboard

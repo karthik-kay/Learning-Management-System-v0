@@ -17,10 +17,15 @@ import {
   Users,
   Zap,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 import { MarketingLayout } from "@/components/public/layouts/MarketingLayout";
 import { FeatureMockup } from "@/components/public/widgets/display/FeatureMockup";
 import { FeatureShowcase } from "@/components/public/widgets/display/FeatureShowcase";
+import {
+  PublicButton,
+  PublicLink,
+} from "@/components/public/widgets/foundation";
 import { Container } from "@/components/shared/primitives";
 import { Button } from "@/components/ui/button";
 
@@ -61,7 +66,7 @@ const programs = [
   },
 ];
 
-const platformReasons = [
+const platformReasons: Array<[string, string, LucideIcon]> = [
   ["Structured path", "Clear weekly milestones, no random tutorial hopping.", BookOpenCheck],
   ["Mentor reviewed", "Projects and progress reviewed by working engineers.", MessageCircle],
   ["Outcome focused", "Portfolio, interviews, and career clarity built into the program.", BriefcaseBusiness],
@@ -142,27 +147,30 @@ function HomeHero() {
     <section className="bg-white py-12 md:py-16">
       <Container>
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_520px] lg:items-center">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full bg-[#FFEEE8] px-4 py-2 text-sm font-medium text-[#E86C0D]">
+          <div className="flex min-h-[500px] flex-col justify-center py-4 lg:min-h-[560px]">
+            <span className="inline-flex w-fit items-center gap-2 border-l-2 border-[#FF7A0E] pl-3 text-sm font-semibold tracking-[0.025em] text-[#E86C0D]">
               <Sparkles className="size-4" />
               Learn with roadmaps, mentors, projects, and career proof
             </span>
-            <h1 className="mt-6 max-w-4xl text-5xl font-semibold leading-tight tracking-tight md:text-7xl">
-              Build real skills that shape your future.
+            <h1 className="mt-10 max-w-4xl text-6xl font-semibold leading-[0.94] tracking-[-0.055em] md:text-7xl xl:text-[5.25rem]">
+              <span className="block text-[#0F172A]">Build real skills.</span>
+              <span className="mt-2 block text-[#FF7A0E]">Shape your future.</span>
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-[#6B7280]">
+            <p className="mt-9 max-w-xl text-lg leading-8 text-[#6B7280]">
               LearnerSlate helps students and graduates move from scattered learning to structured, mentor-reviewed, portfolio-ready growth.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg" className="bg-[#FF7A0E] text-white hover:bg-[#E86C0D]">
-                <Link href="/programs">
-                  Explore programs
-                  <ArrowRight className="size-4" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link href="/roadmaps">Browse roadmaps</Link>
-              </Button>
+            <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
+              <PublicButton asChild variant="conversion" size="lg">
+                <Link href="/programs">Explore programs</Link>
+              </PublicButton>
+              <PublicLink
+                href="/roadmaps"
+                variant="subtle"
+                size="lg"
+              >
+                Browse roadmaps
+                <ArrowRight className="size-4" />
+              </PublicLink>
             </div>
           </div>
 

@@ -1,5 +1,4 @@
 import { MarketingLayout } from "@/components/public/layouts/MarketingLayout";
-import { CommunitySection } from "@/components/public/sections/community/CommunitySection";
 import { ContentSection } from "@/components/public/sections/content/ContentSection";
 import { SplitContent } from "@/components/public/sections/content/variants/SplitContent";
 import { CTASection } from "@/components/public/sections/cta/CTASection";
@@ -8,7 +7,6 @@ import SimpleFeatureSection from "@/components/public/sections/feature/variants/
 import { GridSection } from "@/components/public/sections/grid/GridSection";
 import { ThreeColumnGrid } from "@/components/public/sections/grid/variants/ThreeColumnGrid";
 import { HeroSection } from "@/components/public/sections/hero/HeroSection";
-import { CenterHero } from "@/components/public/sections/hero/variants/CenterHero";
 import { SplitHero } from "@/components/public/sections/hero/variants/SplitHero";
 import { LogoCloudSection } from "@/components/public/sections/logoCloud/LogoCloudSection";
 import { PeopleSection } from "@/components/public/sections/people/PeopleSection";
@@ -19,7 +17,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { TrustedStatsGrid } from "@/components/public/sections/logoCloud/variants/TrustedChips";
-import StatCard from "@/components/public/widgets/cards/StatCard";
+import { PublicStatCard } from "@/components/public/widgets/cards/PublicStatCard";
 import { LogoChip } from "@/components/public/widgets/display/LogoChip";
 import { Metric } from "@/components/public/widgets/display/Metric";
 import { GraduationCap, Users, FolderKanban, Trophy } from "lucide-react";
@@ -393,7 +391,7 @@ export default function AboutPage() {
           */}
         <TrustedStatsGrid>
           {stats.map((stat) => (
-            <StatCard
+            <PublicStatCard
               key={stat.label}
               className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors"
               logo={

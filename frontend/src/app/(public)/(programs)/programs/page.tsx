@@ -15,6 +15,7 @@ import {
   ProgramOutcomesSection,
   ProgramSuccessStoriesSection,
 } from "@/components/public/sections/program/variants/ProgramTrustSections";
+import { ProgramCard } from "@/components/public/widgets/cards/ProgramCard";
 import { Box } from "@/components/shared/primitives";
 import { Button } from "@/components/ui/button";
 import { CalendarDays, MessageSquare } from "lucide-react";
@@ -224,6 +225,54 @@ export default function ProgramsPage() {
           }
         />
       </HeroSection>
+
+      <section className="bg-public-neutral-50 px-5 py-16 sm:px-6 lg:py-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.1em] text-public-teal-700">
+              Compare at a glance
+            </p>
+            <h2 className="mt-3 text-3xl font-extrabold tracking-[-0.035em] text-public-blue-900 sm:text-4xl">
+              Pick the programme that fits your stage
+            </h2>
+            <p className="mt-4 leading-7 text-public-neutral-700">
+              Both paths lead to project proof, mentor feedback, and career
+              preparation. The difference is pace and starting point.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+            <ProgramCard
+              program={{
+                title: undergraduateProgram.title,
+                audience: "1st-3rd year college students",
+                description: undergraduateProgram.description,
+                duration: undergraduateProgram.panel.duration,
+                price: undergraduateProgram.panel.priceLabel,
+                skills: undergraduateProgram.chips,
+                href: "/programs/industry-ready-software-engineer",
+                eyebrow: undergraduateProgram.eyebrow,
+                cohortDate: undergraduateProgram.panel.cohortDate,
+              }}
+              variant="light"
+            />
+            <ProgramCard
+              program={{
+                title: graduateProgram.title,
+                audience: "Graduates and career switchers",
+                description: graduateProgram.description,
+                duration: graduateProgram.quote.duration,
+                price: graduateProgram.panel.priceLabel,
+                skills: graduateProgram.chips,
+                href: "/programs/fast-track-tech-career-program",
+                eyebrow: graduateProgram.eyebrow,
+                cohortDate: graduateProgram.quote.cohortDate,
+              }}
+              variant="featured"
+            />
+          </div>
+        </div>
+      </section>
 
       <ProgramSection className="bg-[#F9FAFB] py-16 lg:py-20">
         <ProgramShowcaseCard

@@ -1,5 +1,6 @@
-import Link from "next/link";
 import { ReactNode } from "react";
+
+import { PublicLink } from "@/components/public/widgets/foundation";
 
 interface NavLinkProps {
   href: string;
@@ -8,11 +9,12 @@ interface NavLinkProps {
 
 export function NavLink({ href, children }: NavLinkProps) {
   return (
-    <Link
+    <PublicLink
       href={href}
-      className="text-sm font-medium hover:text-orange-500 transition-colors"
+      variant="nav"
+      size="md"
     >
       {children}
-    </Link>
+    </PublicLink>
   );
 }

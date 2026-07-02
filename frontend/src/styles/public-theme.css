@@ -1,0 +1,63 @@
+@theme {
+  /* LearnerSlate public brand palette */
+  --color-public-orange-50: #fff4eb;
+  --color-public-orange-100: #ffe6d1;
+  --color-public-orange-200: #ffcca3;
+  --color-public-orange-300: #ffad6b;
+  --color-public-orange-400: #ff8e33;
+  --color-public-orange-500: #ff7a0e;
+  --color-public-orange-600: #e56600;
+  --color-public-orange-700: #b75200;
+  --color-public-orange-800: #8c3f00;
+  --color-public-orange-900: #662e00;
+
+  --color-public-teal-50: #f0fafa;
+  --color-public-teal-100: #ddf3f3;
+  --color-public-teal-200: #bae7e8;
+  --color-public-teal-300: #91d8da;
+  --color-public-teal-400: #67c9cb;
+  --color-public-teal-500: #38a3a5;
+  --color-public-teal-600: #308b8c;
+  --color-public-teal-700: #266f70;
+  --color-public-teal-800: #1d5556;
+  --color-public-teal-900: #153e3f;
+
+  --color-public-mint-50: #effaf5;
+  --color-public-mint-100: #dcf4ea;
+  --color-public-mint-200: #b9ead4;
+  --color-public-mint-300: #8eddba;
+  --color-public-mint-400: #63cfa0;
+  --color-public-mint-500: #57cc99;
+  --color-public-mint-600: #3abe84;
+  --color-public-mint-700: #2e986a;
+  --color-public-mint-800: #237451;
+  --color-public-mint-900: #1a553b;
+
+  --color-public-blue-50: #eff6fb;
+  --color-public-blue-100: #dbebf5;
+  --color-public-blue-200: #b7d6eb;
+  --color-public-blue-300: #8bbedf;
+  --color-public-blue-400: #5fa5d3;
+  --color-public-blue-500: #22577a;
+  --color-public-blue-600: #1d4a68;
+  --color-public-blue-700: #173b53;
+  --color-public-blue-800: #122d3f;
+  --color-public-blue-900: #0d212e;
+
+  --color-public-neutral-50: #f8fafb;
+  --color-public-neutral-100: #f0f3f5;
+  --color-public-neutral-200: #dde4e7;
+  --color-public-neutral-300: #c4cfd4;
+  --color-public-neutral-400: #96a6ae;
+  --color-public-neutral-500: #71838c;
+  --color-public-neutral-600: #566a74;
+  --color-public-neutral-700: #3d525d;
+  --color-public-neutral-800: #273c47;
+  --color-public-neutral-900: #172b35;
+  --color-public-neutral-950: #0b1b23;
+
+  --color-public-error-50: #fdf0ef;
+  --color-public-error-500: #e5484d;
+  --color-public-error-700: #b32b2f;
+  --color-public-error-800: #8f2428;
+}

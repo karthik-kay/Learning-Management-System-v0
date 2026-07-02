@@ -144,7 +144,7 @@ export function ExploreDropdown({ mobile = false }: ExploreDropdownProps) {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="inline-flex h-9 items-center gap-2 rounded-lg bg-slate-100 px-4 text-sm font-semibold text-slate-800 transition hover:bg-orange-50 hover:text-orange-600 data-[state=open]:bg-orange-50 data-[state=open]:text-orange-600">
+      <DropdownMenuTrigger className="inline-flex min-h-10 items-center gap-2 rounded-md px-4 py-2.5 text-sm font-semibold leading-5 text-public-blue-800 outline-none transition-colors hover:bg-public-orange-50 hover:text-public-orange-700 focus-visible:ring-[3px] focus-visible:ring-public-orange-200 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent data-[state=open]:bg-public-orange-50 data-[state=open]:text-public-orange-700">
         Explore
         <ChevronDown className="size-4 transition-transform data-[state=open]:rotate-180" />
       </DropdownMenuTrigger>

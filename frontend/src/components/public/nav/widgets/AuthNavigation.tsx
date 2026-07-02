@@ -2,6 +2,10 @@ import Link from "next/link";
 import { Search } from "lucide-react";
 
 import { Stack, Inline } from "@/components/shared/primitives";
+import {
+  PublicButton,
+  PublicLink,
+} from "@/components/public/widgets/foundation";
 
 interface AuthNavigationProps {
   mobile?: boolean;
@@ -40,28 +44,21 @@ export function AuthNavigation({ mobile = false }: AuthNavigationProps) {
 
   return (
     <Inline gap={16}>
-      <Link
+      <PublicLink
         href="/search"
         aria-label="Search LearnerSlate"
-        className="grid size-9 place-items-center rounded-lg text-slate-600 transition hover:bg-slate-100 hover:text-orange-600"
+        variant="nav"
+        className="size-9 justify-center p-0"
       >
         <Search className="size-4" />
-      </Link>
-      <Link href="/login">Login</Link>
+      </PublicLink>
+      <PublicLink href="/login" variant="nav">
+        Login
+      </PublicLink>
 
-      <Link
-        href="/register"
-        className="
-          rounded-lg
-          bg-orange-500
-          px-4
-          py-2
-          text-white
-          text-[16px]
-        "
-      >
-        Join For Free
-      </Link>
+      <PublicButton asChild variant="conversion" size="md">
+        <Link href="/register">Join For Free</Link>
+      </PublicButton>
     </Inline>
   );
 }

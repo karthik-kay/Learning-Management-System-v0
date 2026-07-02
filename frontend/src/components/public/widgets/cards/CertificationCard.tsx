@@ -1,8 +1,19 @@
-import { Box, Inline, Stack } from "@/components/shared/primitives";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Award, ExternalLink, ShieldCheck } from "lucide-react";
+import {
+  Award,
+  Clock3,
+  ExternalLink,
+  Gauge,
+  Layers3,
+  ShieldCheck,
+} from "lucide-react";
 import Link from "next/link";
+import type { ReactNode } from "react";
+
+import {
+  PublicButton,
+  PublicChip,
+} from "@/components/public/widgets/foundation";
+import { Card } from "@/components/ui/card";
 
 export type CertificationType = "Program" | "Track" | "Course";
 export type CertificationDomain =
@@ -22,6 +33,7 @@ export interface CertificationCardData {
   duration: string;
   skills: string[];
   href: string;
+  image?: string | null;
 }
 
 interface CertificationCardProps {
@@ -29,63 +41,106 @@ interface CertificationCardProps {
 }
 
 export function CertificationCard({ certification }: CertificationCardProps) {
+  const image = certification.image || "/certificate-template.png";
+
   return (
-    <Stack
-      gap={22}
-      className="rounded-xl border border-[#E9EAF0] bg-white p-6 shadow-[0_18px_54px_rgba(15,23,42,0.05)] transition hover:border-[#38A3A5]/40 hover:shadow-[0_24px_70px_rgba(34,87,122,0.1)]"
+    <Card
+      data-slot="certification-card"
+      className="group/certification-card flex h-full flex-col gap-5 overflow-hidden rounded-2xl border-public-neutral-200 bg-white p-0 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition-[border-color,box-shadow] duration-300 hover:border-public-teal-200 hover:shadow-[0_18px_48px_rgba(34,87,122,0.1)]"
     >
-      <Inline>
-        <span className="grid size-11 place-items-center rounded-xl bg-[#38A3A5]/10 text-[#22577A]">
-          <Award className="size-5" />
-        </span>
-        <Badge className="rounded-full border-[#FF7A0E]/20 bg-[#FFEEE8] text-[#E86C0D]">
-          {certification.type}
-        </Badge>
-      </Inline>
+      <div className="relative aspect-[16/7] overflow-hidden border-b border-public-neutral-200 bg-public-neutral-50">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-out group-hover/certification-card:scale-[1.035] motion-reduce:transform-none motion-reduce:transition-none"
+          style={{ backgroundImage: `url("${image}")` }}
+        />
 
-      <Stack gap={10}>
-        <h3 className="text-xl font-bold leading-tight text-[#0F172A]">
-          {certification.title}
-        </h3>
-        <p className="text-sm leading-6 text-[#6B7280]">
-          {certification.description}
-        </p>
-      </Stack>
+        {!certification.image ? (
+          <div className="absolute inset-0 grid place-items-center bg-white/12">
+            <div className="flex items-center gap-2 rounded-lg border border-public-blue-100 bg-white/90 px-3 py-2 shadow-sm backdrop-blur-sm">
+              <Award className="size-5 text-public-teal-700" />
+              <span className="text-xs font-extrabold text-public-blue-900">
+                LearnerSlate Credential
+              </span>
+            </div>
+          </div>
+        ) : null}
 
-      <Inline gap={10} wrap justify="start">
-        <span className="rounded-full bg-[#F9FAFB] px-3 py-1 text-xs font-semibold text-[#22577A]">
-          {certification.domain}
-        </span>
-        <span className="rounded-full bg-[#F9FAFB] px-3 py-1 text-xs font-semibold text-[#22577A]">
-          {certification.level}
-        </span>
-        <span className="rounded-full bg-[#F9FAFB] px-3 py-1 text-xs font-semibold text-[#22577A]">
-          {certification.duration}
-        </span>
-      </Inline>
+        <div className="absolute right-3 top-3">
+          <PublicChip variant="accent" size="sm">
+            {certification.type}
+          </PublicChip>
+        </div>
+      </div>
 
-      <Box className="h-px bg-[#E9EAF0]" />
+      <div className="flex flex-1 flex-col px-5 pb-5">
+        <div>
+          <h3 className="text-xl font-bold leading-tight text-[#0F172A]">
+            {certification.title}
+          </h3>
+          <p className="mt-2 text-sm leading-6 text-public-neutral-500">
+            {certification.description}
+          </p>
+        </div>
 
-      <Inline gap={8} wrap justify="start">
-        {certification.skills.map((skill) => (
-          <span key={skill} className="text-xs font-medium text-[#8C94A3]">
-            {skill}
+        <div className="mt-5 grid grid-cols-3 gap-3 border-y border-public-neutral-200 py-4">
+          <CertificationMeta
+            icon={<Layers3 />}
+            value={certification.domain}
+          />
+          <CertificationMeta
+            icon={<Gauge />}
+            value={certification.level}
+          />
+          <CertificationMeta
+            icon={<Clock3 />}
+            value={certification.duration}
+          />
+        </div>
+
+        <div className="mt-5 flex flex-wrap gap-1.5">
+          {certification.skills.map((skill) => (
+            <PublicChip key={skill} variant="outline" size="sm">
+              {skill}
+            </PublicChip>
+          ))}
+        </div>
+
+        <div className="mt-auto flex items-center justify-between gap-4 pt-5">
+          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.08em] text-public-mint-800">
+            <ShieldCheck className="size-4" />
+            Verifiable
           </span>
-        ))}
-      </Inline>
+          <PublicButton asChild variant="primary" size="sm">
+            <Link href={certification.href}>
+              Details
+              <ExternalLink className="size-4" />
+            </Link>
+          </PublicButton>
+        </div>
+      </div>
+    </Card>
+  );
+}
 
-      <Inline>
-        <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#38A3A5]">
-          <ShieldCheck className="size-4" />
-          Verifiable
-        </span>
-        <Button asChild size="sm" variant="outline">
-          <Link href={certification.href}>
-            Details
-            <ExternalLink className="size-4" />
-          </Link>
-        </Button>
-      </Inline>
-    </Stack>
+function CertificationMeta({
+  icon,
+  value,
+}: {
+  icon: ReactNode;
+  value: string;
+}) {
+  return (
+    <div className="flex min-w-0 items-center gap-2">
+      <span className="flex size-7 shrink-0 items-center justify-center text-public-teal-700 [&_svg]:size-4">
+        {icon}
+      </span>
+      <strong
+        className="block min-w-0 text-xs font-bold leading-tight text-public-blue-900"
+        title={value}
+      >
+        {value}
+      </strong>
+    </div>
   );
 }

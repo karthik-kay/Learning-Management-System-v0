@@ -151,7 +151,7 @@ export function BlogIndexView() {
           }
         >
           <FeaturedBlogGrid
-            primary={<BlogCard post={editorialPosts[0]} variant="large" />}
+            primary={<BlogCard post={editorialPosts[0]} variant="featured" />}
             secondary={editorialPosts
               .slice(1)
               .map((post) => (

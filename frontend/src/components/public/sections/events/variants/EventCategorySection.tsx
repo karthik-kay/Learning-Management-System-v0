@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
+type EventCategoryTone = "teal" | "blue" | "neutral" | "mint" | "orange";
+
 interface EventCategorySectionProps {
   eyebrow: string;
   title: string;
@@ -13,7 +15,21 @@ interface EventCategorySectionProps {
   ctaHref: string;
   events: EventCardData[];
   flipped?: boolean;
+  tone?: EventCategoryTone;
 }
+
+const eyebrowToneClasses: Record<EventCategoryTone, string> = {
+  teal:
+    "border-public-teal-100 bg-public-teal-50 text-public-teal-800",
+  blue:
+    "border-public-blue-100 bg-public-blue-50 text-public-blue-800",
+  neutral:
+    "border-public-neutral-200 bg-public-neutral-100 text-public-blue-800",
+  mint:
+    "border-public-mint-100 bg-public-mint-50 text-public-mint-800",
+  orange:
+    "border-public-orange-100 bg-public-orange-50 text-public-orange-800",
+};
 
 export function EventCategorySection({
   eyebrow,
@@ -24,11 +40,14 @@ export function EventCategorySection({
   ctaHref,
   events,
   flipped = false,
+  tone = "teal",
 }: EventCategorySectionProps) {
   const info = (
     <Stack gap={24}>
       <Stack gap={12}>
-        <span className="w-fit rounded-full bg-[#38A3A5]/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#22577A]">
+        <span
+          className={`w-fit rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-widest ${eyebrowToneClasses[tone]}`}
+        >
           {eyebrow}
         </span>
         <h2 className="max-w-xl text-3xl font-bold leading-tight tracking-tight text-[#0F172A] lg:text-4xl">
@@ -67,17 +86,14 @@ export function EventCategorySection({
 
   return (
     <Grid className="grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
-      {flipped ? (
-        <>
-          {cards}
-          {info}
-        </>
-      ) : (
-        <>
-          {info}
-          {cards}
-        </>
-      )}
+      <div className={flipped ? "order-1 lg:order-2" : "order-1"}>
+        {info}
+      </div>
+      <div className={flipped ? "order-2 lg:order-1" : "order-2"}>
+        {cards}
+      </div>
     </Grid>
   );
 }
+
+export type { EventCategoryTone };
