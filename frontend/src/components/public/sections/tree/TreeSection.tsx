@@ -2,7 +2,7 @@ import { OrgTree } from "../../widgets/display/OrgTree";
 
 const organization = {
   id: "founder",
-  name: "Karthik",
+  name: "Arun",
   role: "Founder & CEO",
   children: [
     {
