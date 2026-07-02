@@ -262,25 +262,25 @@ function ProgramPhaseTimeline({
   return (
     <div>
       <p className="text-sm font-medium text-[#0F172A]">Phase timeline</p>
-      <div className="mt-3 overflow-x-auto pb-1">
-        <div className="relative flex min-w-max gap-5 pr-2">
-          <div className="absolute left-2 right-2 top-2 h-px bg-[#E9EAF0]" />
-          {phases.map((phase, index) => (
-            <div key={`${phase.title}-${index}`} className="relative w-28">
-              <span
-                className={`relative z-10 block size-4 rounded-full ring-4 ring-white ${accentClass}`}
-              >
-                <span className="sr-only">Phase {index + 1}</span>
-              </span>
-              <p className={`mt-3 text-xs font-semibold ${textClass}`}>
-                {phase.title}
-              </p>
-              <p className="mt-1 line-clamp-2 text-xs leading-4 text-[#6B7280]">
-                {phase.subtitle}
-              </p>
-            </div>
-          ))}
-        </div>
+      <div className="mt-4 grid grid-cols-1 gap-x-4 gap-y-5 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
+        {phases.map((phase, index) => (
+          <div
+            key={`${phase.title}-${index}`}
+            className="relative min-w-0 border-t border-[#E9EAF0] pt-3"
+          >
+            <span
+              className={`absolute -top-2 left-0 block size-4 rounded-full ring-4 ring-white ${accentClass}`}
+            >
+              <span className="sr-only">Phase {index + 1}</span>
+            </span>
+            <p className={`text-xs font-semibold ${textClass}`}>
+              {phase.title}
+            </p>
+            <p className="mt-1 text-xs leading-4 text-[#6B7280]">
+              {phase.subtitle}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );
